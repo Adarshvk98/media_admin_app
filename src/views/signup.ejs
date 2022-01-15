@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24x7 News | Sign up</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+
+<body>
+    <header>
+        <nav class="level p-4">
+            <p class="level-item has-text-centered">
+                <img src="./assets/logo.png" alt="" style="width:300px;">
+            </p>
+        </nav>
+    </header>
+    <section class="section">
+        <div class="columns is-centered mb-6">
+            <h1 class="title">Welcome to 24x7 News</h1>
+        </div>
+        <div class="columns is-centered">
+            <div class="column is-one-third">
+                <form class="box" action="/api/auth/register" method="post">
+                    <% if(error){ %>
+                        <article class="message is-danger">
+                            <div class="message-header">
+                                Error
+                                <button class="delete" onclick="(function(){
+                                    window.location.replace(window.location.pathname)
+                                    return false;
+                                })();return false;"></button>
+                            </div>
+                            <div class="message-body">
+                                <%=error%>
+                            </div>
+                        </article>
+                        <% } %>
+                            <% if(msg){ %>
+                                <article class="message is-success">
+                                    <div class="message-header">
+                                        Success
+                                        <button class="delete" onclick="(function(){
+                                            window.location.replace(window.location.pathname)
+                                            return false;
+                                        })();return false;"></button>
+                                    </div>
+                                    <div class="message-body">
+                                        <%=msg%>
+                                    </div>
+                                </article>
+                                <% } %>
+                                    <div class="field">
+                                        <label class="label">Name</label>
+                                        <div class="control">
+                                            <input class="input" id="name" name="name" type="text" required
+                                                placeholder="Enter your name">
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <label class="label">Email</label>
+                                        <div class="control">
+                                            <input class="input" id="email" name="email" type="email" required
+                                                placeholder="e.g. alex@example.com">
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <label class="label">Password</label>
+                                        <div class="control">
+                                            <input class="input" id="password" name="password" type="password" required
+                                                placeholder="********">
+                                        </div>
+                                    </div>
+                                    <button class="button is-primary">Sign up</button>
+                                    <label class="checkbox ml-2 mt-2">
+                                        Already have an account? <a href="/">Login</a>
+                                    </label>
+                </form>
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>

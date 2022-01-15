@@ -1,0 +1,92 @@
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Functions to open and close a modal
+        function openModal($el) {
+            $el.classList.add('is-active');
+        }
+
+        function closeModal($el) {
+            $el.classList.remove('is-active');
+        }
+
+        function closeAllModals() {
+            (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+                closeModal($modal);
+            });
+        }
+
+        // Add a click event on buttons to open a specific modal
+        (document.querySelectorAll('.add-modal-trigger') || []).forEach(($trigger) => {
+            const modal = $trigger.dataset.target;
+            const $target = document.getElementById(modal);
+
+            $trigger.addEventListener('click', () => {
+                openModal($target);
+            });
+        });
+
+        // Add a click event on various child elements to close the parent modal
+        (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+            const $target = $close.closest('.modal');
+
+            $close.addEventListener('click', () => {
+                closeModal($target);
+            });
+        });
+
+        // Add a keyboard event to close all modals
+        document.addEventListener('keydown', (event) => {
+            const e = event || window.event;
+
+            if (e.keyCode === 27) { // Escape key
+                closeAllModals();
+            }
+        });
+    });
+</script>
+
+<div class="modal" id="add-news-model">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <form action="api/news/add" method="post">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Add News</p>
+                <button class="delete" aria-label="close" type="reset"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="field">
+                    <label class="label">Title</label>
+                    <div class="control">
+                        <input class="input" id="title" name="title" type="text" required
+                            placeholder="e.g. Lorem ipsum dolor sit amet, consectetur">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Description</label>
+                    <div class="control">
+                        <textarea class="textarea" name="description" id="description"
+                            placeholder="e.g. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque risus mi, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum felis venenatis efficitur."></textarea>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Refrence Image Url</label>
+                    <div class="control">
+                        <input class="input" id="img_url" name="img_url" type="text" required
+                            placeholder="e.g. https://www.example.com/image/1220x720">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Refrence More Url</label>
+                    <div class="control">
+                        <input class="input" id="ref_url" name="ref_url" type="text" required
+                            placeholder="e.g. https://www.example.com/news">
+                    </div>
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+                <button type="submit" class="button is-primary">Save changes</button>
+                <button class="button" type="reset">Cancel</button>
+            </footer>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24x7 News | Edit news</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <%- include('./header'); %>
+    </header>
+    <section class="section mt-6 pt-4">
+        <div class="columns is-centered mb-3 mt-6">
+            <div class="column is-5 ml-4">
+                <a class="button is-primary is-inverted mb-4" href="/dashboard">
+                    <span class="icon-text">
+                        <span class="icon">
+                            <i style="font-size: 20px;" class="fas fa-arrow-circle-left"></i>
+                        </span>
+                        <span> Go Back </span>
+                    </span>
+                </a>
+                <h1 style="display: inline;" class="title">Edit News</h1>
+            </div>
+        </div>
+        <div class="columns is-centered">
+            <div class="column is-two-fifths">
+                <form class="box" action="api/news/edit" method="post">
+                    <input type="hidden" name="id" id="id" value="<%= data.id %>" />
+                    <div class="field">
+                        <label class="label">Title</label>
+                        <div class="control">
+                            <input class="input" id="title" name="title" type="text" required
+                                placeholder="e.g. Lorem ipsum dolor sit amet, consectetur" value="<%= data.title %>">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Description</label>
+                        <div class="control">
+                            <textarea class="textarea" name="description" id="description" value=""
+                                placeholder="e.g. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque risus mi, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum felis venenatis efficitur."><%= data.description %></textarea>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Refrence Image Url</label>
+                        <div class="control">
+                            <input class="input" id="img_url" name="img_url" type="text" required
+                                value="<%= data.img_url %>" placeholder="e.g. https://www.example.com/image/1220x720">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Refrence More Url</label>
+                        <div class="control">
+                            <input class="input" id="ref_url" name="ref_url" type="text" required
+                                value="<%= data.ref_url %>" placeholder="e.g. https://www.example.com/news">
+                        </div>
+                    </div>
+                    <button type="submit" class="button is-primary">Save changes</button>
+                </form>
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>
