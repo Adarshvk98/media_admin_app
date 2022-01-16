@@ -1,7 +1,7 @@
 {
   "name": "media_admin_app",
   "version": "1.0.0",
-  "description": "Update24x7",
+  "description": "Update24x7 Admin app",
   "main": "start.js",
   "scripts": {
     "start": "node start.js",
