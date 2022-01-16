@@ -12,6 +12,7 @@
     <link rel="manifest" href="./assets/favicon_io/site.webmanifest">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -49,94 +50,91 @@
                     </article>
 
                     <% } %>
-                        <div class="columns is-centered mb-6">
-                            <h1 class="title mt-6"> 24x7 News List</h1>
-                        </div>
-                        
-                        <div class="columns is-centered is-multiline">
-                            <% if(newslist.length==0){ %>
-                                <div class="columns is-full is-multiline is-centered mt-6 p-6 ml-6">
-                                    <div class="column is-full is-offset-8">
-                                        <span class="icon">
-                                            <i style="font-size: 150px;" class="fas fa-box-open"></i>
-                                        </span>
-                                    </div>
-                                   
-                                    <div class="column is-full">
-                                        <p class="block">
-                                            News list is empty <strong>Please try to add items !!</strong>.
-                                        </p>
+                        <div class="container is-max-desktop">
+                            <section class="featured">
+                                <div class="level">
+                                    <div class="level-left">
+                                        <div class="level-item">
+                                            <h2 class="subtitle">24X7 News List</h2>
+                                        </div>
                                     </div>
                                 </div>
-                                <% } else{ %>
-                                    <% for(var i=0; i<newslist.length; i++) {%>
-                                        <div class="column is-4">
-                                            <div class="card">
-                                                <div class="card-image">
-                                                    <figure class="image is-4by3">
-                                                        <img src="<%= newslist[i].img_url %>" alt="News image">
-                                                    </figure>
-                                                </div>
-                                                <div class="card-content">
-                                                    <div class="media">
-                                                        <div class="media-content">
-                                                            <p class="title is-4">
-                                                                <%= newslist[i].title %>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="content">
-                                                        <%= newslist[i].description %>
-                                                            <br>
-                                                            <br>
-                                                            <span class="icon-text">
-                                                                <span class="icon">
-                                                                    <i class="fas fa-history"></i>
-                                                                </span>
-                                                                <time>
-                                                                    <%= moment(newslist[i].createdAt).format("MMMM Do YYYY, h:mm A") %>
-                                                                </time>
-                                                            </span>
-                                                            
-                                                    </div>
-                                                </div>
-                                                <footer class="card-footer">
-                                                    <form 
-                                                    action="/editView" method="post"
-                                                        class="card-footer-item">
-                                                        <input type="hidden" name="id" id="id"
-                                                            value="<%= newslist[i]._id %>" />
-                                                        <input type="hidden" name="title" id="title"
-                                                            value="<%= newslist[i].title %>" />
-                                                            <input type="hidden" name="description" id="description"
-                                                            value="<%= newslist[i].description %>" />
-                                                            <input type="hidden" name="img_url" id="img_url"
-                                                            value="<%= newslist[i].img_url %>" />
-                                                            <input type="hidden" name="ref_url" id="ref_url"
-                                                            value="<%= newslist[i].ref_url %>" />
-                                                        <button class="button is-success is-inverted edit-modal-trigger"
-                                                        data-target="edit-news-model" type="submit">Edit</button>
-                                                    </form>
-                                                    <form action="/api/news/delete" method="post"
-                                                        class="card-footer-item">
-                                                        <input type="hidden" name="id" id="id"
-                                                            value="<%= newslist[i]._id %>" />
-                                                        <button class="button is-danger is-inverted"
-                                                            type="submit">Delete</button>
-                                                    </form>
-                                                </footer>
+                                <div class="columns is-variable is-multiline">
+                                    <% if(newslist.length==0){ %>
+                                        <div class="columns is-full is-multiline is-centered mt-6 p-6 ml-6">
+                                            <div class="column is-full is-offset-8">
+                                                <span class="icon">
+                                                    <i style="font-size: 150px;" class="fas fa-box-open"></i>
+                                                </span>
+                                            </div>
+        
+                                            <div class="column is-full">
+                                                <p class="block">
+                                                    News list is empty <strong>Please try to add items !!</strong>.
+                                                </p>
                                             </div>
                                         </div>
-                                        
+                                        <% } else{ %>
+                                            <% for(var i=0; i<newslist.length; i++) {%>
+                                                <div class="column is-4 has-text-left">
+                                                    <div class="card is-shady">
+                                                        <div class="card-image">
+                                                            <figure class="image is-4by3">
+                                                                <img src="<%= newslist[i].img_url %>" alt="Placeholder image"
+                                                                    class="modal-button">
+                                                            </figure>
+                                                        </div>
+                                                        <div class="card-content">
+                                                            <div class="content">
+                                                                <h4>
+                                                                    <%= newslist[i].title %>
+                                                                </h4>
+                                                                <p>
+                                                                    <%= newslist[i].description %>
+                                                                </p>
+                                                                <span class="tag is-rounded">
+                                                                    <span class="icon-text">
+                                                                        <span class="icon">
+                                                                            <i class="fas fa-history"></i>
+                                                                        </span>
+                                                                        <time>
+                                                                            <%= moment(newslist[i].createdAt).format("MMMM Do YYYY, h:mm A") %>
+                                                                        </time>
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <footer class="card-footer">
+                                                            <form action="/editView" method="post" class="card-footer-item">
+                                                                <input type="hidden" name="id" id="id"
+                                                                    value="<%= newslist[i]._id %>" />
+                                                                <input type="hidden" name="title" id="title"
+                                                                    value="<%= newslist[i].title %>" />
+                                                                <input type="hidden" name="description" id="description"
+                                                                    value="<%= newslist[i].description %>" />
+                                                                <input type="hidden" name="img_url" id="img_url"
+                                                                    value="<%= newslist[i].img_url %>" />
+                                                                <input type="hidden" name="ref_url" id="ref_url"
+                                                                    value="<%= newslist[i].ref_url %>" />
+                                                                <button class="button is-success is-inverted edit-modal-trigger"
+                                                                    data-target="edit-news-model" type="submit">Edit</button>
+                                                            </form>
+                                                            <form action="/api/news/delete" method="post"
+                                                                class="card-footer-item">
+                                                                <input type="hidden" name="id" id="id"
+                                                                    value="<%= newslist[i]._id %>" />
+                                                                <button class="button is-danger is-inverted"
+                                                                    type="submit">Delete</button>
+                                                            </form>
+                                                        </footer>
+                                                    </div>
+                                                </div>
+                                
+                                                <% } %>
                                         <% } %>
-                                    </div>
+                                </div>
+                            </section>
                         </div>
-                        
-                    <% } %>
-                                   
-                            </div>
-
     </section>
 
 </body>

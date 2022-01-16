@@ -1,0 +1,17 @@
+/* news sryle */
+
+.featured {
+    padding: 3rem 0;
+  }
+  .featured .level {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid lightgrey;
+  }
+  .featured .level-item h2 {
+    color: var(--primary);
+    font-weight: 600;
+  }
+  .featured article .subtitle {
+    margin-top: 1rem;
+    color: #212121;
+  }
