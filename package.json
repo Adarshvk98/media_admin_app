@@ -8,8 +8,16 @@
     "dev": "nodemon start.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adarshvk98/media_admin_app.git"
+  },
   "author": "Adarsh v k",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Adarshvk98/media_admin_app/issues"
+  },
+  "homepage": "https://github.com/Adarshvk98/media_admin_app#readme",
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
