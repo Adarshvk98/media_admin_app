@@ -1,0 +1,8 @@
+FROM node:10
+LABEL MAINTAINER Test User <testuser@example.com>
+WORKDIR /media_admin_app/start
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 8080
+CMD ["node", "start.js"]
